@@ -10,6 +10,7 @@
 
 <?php
 include('./connectDB.php');
+include('./passVar.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -31,8 +32,8 @@ $mail->Port = 465;
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 $mail->SMTPAuth = true;
 
-$mail->Username = "your.email@address";
-$mail->Password = 'your password';
+$mail->Username = $mailFrom;
+$mail->Password = $mailPass;
 
 $mail->setFrom("pampelhans102@gmail.com", "Pampelmann");
 $mail->addAddress($email, $name);

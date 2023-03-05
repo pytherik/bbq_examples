@@ -13,12 +13,14 @@
           <h3>jetzt eine Aktivierungs-Mail anforderst.</h3></br>
           <form method="POST">
             <div class="input-container">
-              <input class="logging" type="submit" name="mail" value="Mail anfordern">
+              <input class="logging" type="submit" name="mail" value="Aktivierungs-Mail anfordern">
             </div>
           </form>
 <?php
 
 include('./connectDB.php');
+include('./passVar.php');
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -31,7 +33,7 @@ if (isset($_POST['mail'])){
   $name = $_COOKIE['username'];
   $email = getEmail($name);
   
-  $body = "Bitte klicke <a href='http://192.168.178.31/bbq_examples/komplexe_uebung/activationLink.php'>hier</a> um zum Spiel zu kommen!";
+  // $body = "Bitte klicke <a href='http://192.168.178.31/bbq_examples/komplexe_uebung/activationLink.php'>hier</a> um zum Spiel zu kommen!";
   
   $htmlBody = file_get_contents('./mailTemplate.html');
 
@@ -42,8 +44,8 @@ if (isset($_POST['mail'])){
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
   $mail->SMTPAuth = true;
   
-  $mail->Username = "your.email@address";
-  $mail->Password = "your password";
+  $mail->Username = $mailFrom;
+  $mail->Password = $mailPass;
   
   $mail->setFrom("pampelhans102@gmail.com", "Pampelmann");
   $mail->addAddress($email, $name);
