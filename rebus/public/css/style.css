@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #444;
+  color: #EDDBC7;
+}
+
+table {
+  border: 1px solid #EDDBC7;
+  font-size: 1.5rem;
+}
+
+td {
+  text-align: center;
+}
+
+.container {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #888;
+}
+
+input {
+  font-size: 1.4rem;
+  padding: 0 .4rem;
+  border-radius: .4rem;
+}

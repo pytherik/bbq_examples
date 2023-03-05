@@ -1,0 +1,13 @@
+table spieler:
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| spielername | varchar(50)  | NO   | PRI | NULL    |       |
+| email       | varchar(150) | NO   |     | NULL    |       |
+| passwort    | varchar(60)  | NO   |     | NULL    |       |
+| zeitstempel | varchar(20)  | YES  |     | NULL    |       |
+| logfails    | int(11)      | YES  |     | NULL    |       |
+| failed_at   | varchar(20)  | YES  |     | NULL    |       |
+| active      | tinyint(1)   | NO   |     | 0       |       |
++-------------+--------------+------+-----+---------+-------+
+

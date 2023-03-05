@@ -1,0 +1,16 @@
+body {
+	background-color: #444;
+	color: #e9a5f4;
+}
+
+input {
+	font-size: 2rem;
+	background-color: #888;
+	border-radius: .5rem;
+}
+
+#canv {
+	margin-top: 3rem;
+	margin-left: 5rem;
+	border: 1px solid #d3d3d3;
+}
