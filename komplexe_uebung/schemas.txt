@@ -1,4 +1,4 @@
-table spieler:
+describe spieler:
 +-------------+--------------+------+-----+---------+-------+
 | Field       | Type         | Null | Key | Default | Extra |
 +-------------+--------------+------+-----+---------+-------+
@@ -10,4 +10,10 @@ table spieler:
 | failed_at   | varchar(20)  | YES  |     | NULL    |       |
 | active      | tinyint(1)   | NO   |     | 0       |       |
 +-------------+--------------+------+-----+---------+-------+
+table spieler
 
+TODO
+¯¯¯¯
+- create passVar.php
+  - $mailFrom = "your.gmail.addAddress"
+  - $mailPass = "your gmail app password"
