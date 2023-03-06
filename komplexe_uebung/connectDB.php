@@ -79,16 +79,11 @@ function checkTime() {
   try {
     $result = $conn->query("SELECT zeitstempel FROM spieler WHERE spielername='$name'");
     $res = $result->fetch_assoc();
-    // var_dump($res);
     $conn->close();
     
     $start_time = new DateTime($res['zeitstempel']);
-    // $start = $start_time->format('Y-m-d H:i:s');
     $time_delta = $new->diff($start_time);
     $time_passed = ($time_delta->d*24*60)+($time_delta->h*60)+$time_delta->i;
-    // echo "<h1>online: $time_passed</h1>";
-    // echo "<h1>now: $now</h1>";
-    // echo "<h1>start: $start</h1>";
     if ($time_passed > 1) {
       logout($name);
       exit();
