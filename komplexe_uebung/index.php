@@ -36,7 +36,6 @@ if(isset($_POST['loginName']) && isset($_POST['pass'])) {
       $conn = conn_admin('update_admin');
       $conn->query("UPDATE spieler SET zeitstempel='$zeitstempel' WHERE spielername='$user'");
       $conn->close();
-      // $_SESSION['username'] = $user;
       setcookie('username', $user);
       header('Refresh:0;url=./quiz.php');
     } else {

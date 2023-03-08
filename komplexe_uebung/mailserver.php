@@ -9,6 +9,7 @@
       <h1 class="header big-header">Konto erstellen</h1>
 
 <?php
+
 include('./connectDB.php');
 include('./passVar.php');
 use PHPMailer\PHPMailer\PHPMailer;
