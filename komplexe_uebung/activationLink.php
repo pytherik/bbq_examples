@@ -11,6 +11,7 @@ try {
   header('Location:./quiz.php');
 } catch (Exception $e) {
   echo $e->getMessage();
+  exit();
 }
 
 ?>

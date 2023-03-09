@@ -53,37 +53,6 @@ function checkEmail($email) {
   return $msg;
 }
 
-function checkPass($pass, $pass2) {
-  if ($pass == '' || $pass2 == '') {
-    $msg = "Hier fehlt noch was!";
-  } else if ($pass != $pass2) {
-    $msg = "Die Eingaben sind unterschiedlich!";
-  } else {  
-    //: regex patterns                         
-    $hasCapital = "/^.*[A-Z].*$/";
-    $hasCorrectLength = "/^.{8,12}$/";
-    $containsNumber = "/^.*[0-9].*$/";
-    $hasSpecialChar = "/^.*[^A-Za-z0-9\s].*$/"; 
-    $perfectMatch = "/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[^A-Za-z0-9\ ])(?=\S*[\d])\S*$/";
-  
-    //: Vergleich der patterns mit Eingabe
-    if (!preg_match($perfectMatch, $pass) == 1){
-      if (preg_match($hasCapital, $pass) == 0) {
-        $msg = "Großbuchstabe fehlt!";
-      } else if (preg_match($hasCorrectLength, $pass) == 0) {
-        $msg = "Bitte 8-12 Buchstaben!";
-      } else if (preg_match($containsNumber, $pass) == 0) {
-        $msg = "Keine Zahl drin!";
-      } else if (preg_match($hasSpecialChar, $pass) == 0) {
-        $msg = "Kein Sonderzeichen drin!";
-      }
-    } else {
-      $msg = true;
-    }
-  }
-  return $msg;
-}
-
 if (isset($_POST['regName']) && (isset($_POST['pass'])) && (isset($_POST['pass2'])) &&  (isset($_POST['email']))) {
   $name = $_POST['regName'];
   $email = $_POST['email'];
@@ -100,7 +69,7 @@ if (isset($_POST['regName']) && (isset($_POST['pass'])) && (isset($_POST['pass2'
       $now = new DateTime('now');
       $pass_hash = password_hash($pass, PASSWORD_BCRYPT);
       $zeitstempel = $now->format('Y-m-d H:i:s');
-      $conn->query("INSERT INTO spieler VALUES('$name', '$email', '$pass_hash', NULL, NULL, NULL, false)");
+      $conn->query("INSERT INTO spieler VALUES('$name', '$email', '$pass_hash', NULL, 0, false)");
       $conn->close();
       setcookie('username', $name); 
       header('Location:./mailserver.php');

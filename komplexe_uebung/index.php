@@ -39,6 +39,22 @@ if(isset($_POST['loginName']) && isset($_POST['pass'])) {
       setcookie('username', $user);
       header('Refresh:0;url=./quiz.php');
     } else {
+      try {
+        $conn = conn_admin('update_admin');
+        $conn->query("UPDATE spieler SET logfails = (logfails + 1) WHERE spielername = '$user'");
+        $res = $conn->query("SELECT logfails FROM spieler WHERE spielername = '$user'");
+        if (mysqli_num_rows($rows) > 0) {
+          $fails = $res->fetch_assoc();
+          if ($fails['logfails'] > 3) {
+            $conn->query("UPDATE spieler SET active = 0 WHERE spielername = '$user'");
+            header('Location:./passReset.php');
+          }
+        }
+        $conn->close();
+      } catch (Exception $e) {
+        echo $e->getMessage();
+        $conn->close();
+      }
       $passMSG = "Das Passwort stimmt nicht!";
     }
   }
@@ -63,6 +79,7 @@ if(isset($_POST['loginName']) && isset($_POST['pass'])) {
           </div>
           <div class="input-container">
             <button class="logging" type="submit">Anmelden</button></br>
+            <a href="./passReset.php"><span class="log-toggle">Passwort vergessen?</span></a></br>
             <a href="./register.php"><span class="log-toggle">Ich hab noch kein Konto :-(</span></a>
           </div>
         </form>
