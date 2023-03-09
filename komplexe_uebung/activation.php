@@ -13,7 +13,7 @@
           <h3>jetzt eine Aktivierungs-Mail anforderst.</h3></br>
           <form method="POST">
             <div class="input-container">
-              <input class="logging" type="submit" name="mail" value="Aktivierungs-Mail anfordern">
+              <input class="logging" type="submit" name="mail" value="Mail senden">
             </div>
           </form>
 <?php

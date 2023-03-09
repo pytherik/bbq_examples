@@ -17,3 +17,5 @@ TODO
 - create passVar.php
   - $mailFrom = "your.gmail.addAddress"
   - $mailPass = "your gmail app password"
+
+Anpassen des activation Pfades 
