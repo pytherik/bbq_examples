@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css">
     <title>pampel-active</title>
   </head>
   <body>
@@ -18,22 +18,21 @@
           </form>
 <?php
 
-include('./connectDB.php');
+include('../connectDB.php');
 include('./passVar.php');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+require '../PHPMailer/src/Exception.php';
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
 
 if (isset($_POST['mail'])){
   
   $name = $_COOKIE['username'];
   $email = getEmail($name);
   
-  // $body = "Bitte klicke <a href='http://192.168.178.31/bbq_examples/komplexe_uebung/activationLink.php'>hier</a> um zum Spiel zu kommen!";
   
   $htmlBody = file_get_contents('./mailTemplate.html');
 

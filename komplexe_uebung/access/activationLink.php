@@ -1,5 +1,5 @@
 <?php
-include('./connectDB.php');
+include('../connectDB.php');
 
 try {
   $name = $_COOKIE['username'];
@@ -8,7 +8,7 @@ try {
   $zeitstempel = $now->format('Y-m-d H:i:s');
   $conn->query("UPDATE spieler SET zeitstempel='$zeitstempel', active = true WHERE spielername='$name'");
   $conn->close();
-  header('Location:./quiz.php');
+  header('Location:../quiz.php');
 } catch (Exception $e) {
   echo $e->getMessage();
   exit();

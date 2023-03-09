@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css">
     <title>pampel-mailer</title>
   </head>
   <body>
@@ -10,19 +10,19 @@
 
 <?php
 
-include('./connectDB.php');
+include('../connectDB.php');
 include('./passVar.php');
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+use \PHPMailer\PHPMailer\PHPMailer;
+use \PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+require '../PHPMailer/src/Exception.php';
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
 
 $name = $_COOKIE['username'];
 $email = getEmail($name);
 
-$body = "Bitte klicke <a href='http://10.101.214.120/ebweb/bbq_examples/komplexe_uebung/passResetNew.php'>hier</a> um ein neues Passwort anzulegen!";
+$body = "Bitte klicke <a href='http://192.168.178.31/bbq_examples/komplexe_uebung/access/passResetNew.php'>hier</a> um ein neues Passwort anzulegen!";
 
 $htmlBody = file_get_contents('./mailTemplate.html');
 

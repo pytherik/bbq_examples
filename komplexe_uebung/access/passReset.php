@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./public/css/style.css">
+  <link rel="stylesheet" href="../public/css/style.css">
   <title>Passwort Reset</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
   <h1 class="header">Bitte hier jetzt Name usw..!</h1>
 <?php
 
-include('./connectDB.php');
+include('../connectDB.php');
 
 $nameMSG = '';
 $emailMSG = '';
@@ -29,10 +29,14 @@ if (isset($_POST['regName']) && isset($_POST['email'])) {
     if (mysqli_num_rows($res) == 1) {
 
       setcookie('username', $name);
+      $conn->close();
       header('Location:./passMail.php');
+    } else {
+      $nameMSG = "Diesen Spieler gibt es nicht!";
     }
   } catch (Exception $e) {
     echo $e->getMessage();
+    $conn->close();
   }
 }
 
@@ -57,7 +61,7 @@ if (isset($_POST['regName']) && isset($_POST['email'])) {
         <div class="input-container">
           <button class="logging" type="submit">Mail schicken</button></br>
         </div>
-</form>
+      </form>
     </div>
   </div>
 </body>

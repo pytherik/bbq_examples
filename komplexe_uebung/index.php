@@ -47,7 +47,7 @@ if(isset($_POST['loginName']) && isset($_POST['pass'])) {
           $fails = $res->fetch_assoc();
           if ($fails['logfails'] > 3) {
             $conn->query("UPDATE spieler SET active = 0 WHERE spielername = '$user'");
-            header('Location:./passReset.php');
+            header('Location:./access/passReset.php');
           }
         }
         $conn->close();
@@ -79,8 +79,8 @@ if(isset($_POST['loginName']) && isset($_POST['pass'])) {
           </div>
           <div class="input-container">
             <button class="logging" type="submit">Anmelden</button></br>
-            <a href="./passReset.php"><span class="log-toggle">Passwort vergessen?</span></a></br>
-            <a href="./register.php"><span class="log-toggle">Ich hab noch kein Konto :-(</span></a>
+            <a href="./access/passReset.php"><span class="log-toggle">Passwort vergessen?</span></a></br>
+            <a href="./access/register.php"><span class="log-toggle">Ich hab noch kein Konto :-(</span></a>
           </div>
         </form>
       </div>

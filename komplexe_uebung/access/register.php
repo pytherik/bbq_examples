@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css">
     <title>quiz-register</title>
   </head>
   <body>
@@ -10,7 +10,7 @@
 
 <?php
 
-include('./connectDB.php');
+include('../connectDB.php');
 
 
 $name ='';
@@ -113,7 +113,7 @@ if (isset($_POST['regName']) && (isset($_POST['pass'])) && (isset($_POST['pass2'
             </div>
             <div class="input-container">
               <button class="logging" type="submit">Konto erstellen</button></br>
-              <a href="./index.php"><span class="log-toggle">Ich hab schon ein Konto :-)</span></a>
+              <a href="../index.php"><span class="log-toggle">Ich hab schon ein Konto :-)</span></a>
             </div>
           </form>
         </div>

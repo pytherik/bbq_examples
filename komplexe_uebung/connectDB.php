@@ -90,7 +90,7 @@ function isActive($name) {
     $res = $row->fetch_assoc();
     if (!$res['active']){
       $conn->close();  
-      header('Location:./activation.php');
+      header('Location:./access/activation.php');
       exit();
     }
   } catch (Exception $e) {

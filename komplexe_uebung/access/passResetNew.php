@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./public/css/style.css">
+  <link rel="stylesheet" href="../public/css/style.css">
   <title>Passwort Reset</title>
 </head>
 <body>
   <h1 class="header">Hier kannst du dein Passwort zurücksetzen!</h1>
 <?php
 
-include('./connectDB.php');
+include('../connectDB.php');
 
 $passMSG = '';
 
@@ -29,7 +29,7 @@ if (isset($_POST['pass']) && isset($_POST['pass2'])) {
       $conn = conn_admin('update_admin');
       $conn->query("UPDATE spieler SET passwort='$pass_hash', zeitstempel='$zeitstempel', logfails = 0, active = 1 WHERE spielername='$name'");
       $conn->close();
-      header('Location:./quiz.php');
+      header('Location:../quiz.php');
     } catch (Exception $e) {
       echo $e->getMessage();
       $conn->close();
@@ -54,8 +54,7 @@ if (isset($_POST['pass']) && isset($_POST['pass2'])) {
           <input class="logging" id="pw2" type="password" name="pass2" autocomplete="off"></br>
         </div>
         <div class="input-container">
-          <button class="logging" type="submit">Konto erstellen</button></br>
-          <a href="./index.php"><span class="log-toggle">Ich hab schon ein Konto :-)</span></a>
+          <button class="logging" type="submit">Passwort Reset</button></br>
         </div>
       </form>
     </div>
