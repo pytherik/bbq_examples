@@ -22,9 +22,10 @@ require '../PHPMailer/src/SMTP.php';
 $name = $_COOKIE['username'];
 $email = getEmail($name);
 
-$body = "Bitte klicke <a href='http://192.168.178.31/bbq_examples/komplexe_uebung/access/passResetNew.php'>hier</a> um ein neues Passwort anzulegen!";
+$htmlBody = file_get_contents('./passTemplate.html');
+$body = "Bitte klicke <a href='http://10.101.214.120/ebweb/bbq_examples/komplexe_uebung/access/passResetNew.php'>hier</a> um ein neues Passwort anzulegen!";
 
-$htmlBody = file_get_contents('./mailTemplate.html');
+$htmlBody = file_get_contents('./passTemplate.html');
 
 $mail = new PHPMailer();
 $mail->isSMTP();
@@ -42,7 +43,7 @@ $mail->addAddress($email, $name);
 // $mail->addAttachment("Anhang.zip", "Test.zip");
 $mail->isHTML(true);
 $mail->Subject = "Kontoaktivierung";
-$mail->Body = $body;
+$mail->Body = $htmlBody;
 
 if($mail->send()){
     echo "

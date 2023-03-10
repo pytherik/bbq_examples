@@ -58,6 +58,9 @@ function checkPass($pass, $pass2) {
 
 function logout($name) {
     session_destroy();
+    unset($_COOKIE['username']);
+    setcookie('username', null, -1);
+    unset($_POST);
     try {
       $conn = conn_admin('update_admin');
       $conn->query("UPDATE spieler SET zeitstempel=NULL WHERE spielername='$name'");
@@ -65,9 +68,6 @@ function logout($name) {
     } catch (Exception $e) {
       echo $e->getMessage();
     }
-    unset($_COOKIE['username']);
-    setcookie('username', null, -1);
-    unset($_POST);
     header("Location:./index.php");
 }
 
