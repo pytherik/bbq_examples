@@ -34,7 +34,7 @@ if(isset($_POST['loginName']) && isset($_POST['pass'])) {
       $now = new DateTime('now');
       $zeitstempel = $now->format('Y-m-d H:i:s');
       $conn = conn_admin('update_admin');
-      $conn->query("UPDATE spieler SET zeitstempel='$zeitstempel' WHERE spielername='$user'");
+      $conn->query("UPDATE spieler SET zeitstempel='$zeitstempel', logfails = 0 WHERE spielername='$user'");
       $conn->close();
       setcookie('username', $user);
       header('Refresh:0;url=./quiz.php');
