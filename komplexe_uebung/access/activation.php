@@ -33,8 +33,10 @@ if (isset($_POST['mail'])){
   $name = $_COOKIE['username'];
   $email = getEmail($name);
   
+  include('./htmlBodies.php');
   
-  $htmlBody = file_get_contents('./mailTemplate.html');
+  // $htmlBody = file_get_contents('./mailTemplate.html');
+  $htmlBody = $passTemplate;
 
   $mail = new PHPMailer();
   $mail->isSMTP();

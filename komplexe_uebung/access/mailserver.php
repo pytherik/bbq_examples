@@ -22,9 +22,12 @@ require '../PHPMailer/src/SMTP.php';
 $name = $_COOKIE['username'];
 $email = getEmail($name);
 
+include('./htmlBodies.php');
+
 $body = "Bitte klicke <a href='http://192.168.178.31/bbq_examples/komplexe_uebung/access/activationLink.php'>hier</a> um zum Spiel zu kommen!";
 
-$htmlBody = file_get_contents('./mailTemplate.html');
+// $htmlBody = file_get_contents('./mailTemplate.html');
+$htmlBody = $mailTemplate;
 
 $mail = new PHPMailer();
 $mail->isSMTP();
@@ -36,7 +39,7 @@ $mail->SMTPAuth = true;
 $mail->Username = $mailFrom;
 $mail->Password = $mailPass;
 
-$mail->setFrom("pampelhans102@gmail.com", "Pampelmann");
+$mail->setFrom($mailFrom, "Pampelmann");
 $mail->addAddress($email, $name);
 
 // $mail->addAttachment("Anhang.zip", "Test.zip");

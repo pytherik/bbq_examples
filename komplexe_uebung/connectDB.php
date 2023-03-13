@@ -115,6 +115,7 @@ function checkTime() {
     $start_time = new DateTime($res['zeitstempel']);
     $time_delta = $new->diff($start_time);
     $time_passed = ($time_delta->d*24*60)+($time_delta->h*60)+$time_delta->i;
+  
     if ($time_passed > 1) {
       logout($name);
       exit();

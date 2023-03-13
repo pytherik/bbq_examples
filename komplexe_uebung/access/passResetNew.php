@@ -14,25 +14,28 @@
 include('../connectDB.php');
 
 $passMSG = '';
-
-if (isset($_POST['pass']) && isset($_POST['pass2'])) {
-  $pass = $_POST['pass'];
-  $pass2 = $_POST['pass2'];
-  $name = $_COOKIE['username'];
-  $passMSG = checkPass($pass, $pass2);
-  if ($passMSG === true) {
-    try {
-      $now = new DateTime('now');
-      $pass_hash = password_hash($pass, PASSWORD_BCRYPT);
-      $zeitstempel = $now->format('Y-m-d H:i:s');
-
-      $conn = conn_admin('update_admin');
-      $conn->query("UPDATE spieler SET passwort='$pass_hash', zeitstempel='$zeitstempel', logfails = 0, active = 1 WHERE spielername='$name'");
-      $conn->close();
-      header('Location:../quiz.php');
-    } catch (Exception $e) {
-      echo $e->getMessage();
-      $conn->close();
+if (isset($_GET['name'])) {
+  $name = $_GET['name'];
+  setcookie('username',$name);
+  if (isset($_POST['pass']) && isset($_POST['pass2'])) {
+    $pass = $_POST['pass'];
+    $pass2 = $_POST['pass2'];
+    $name = $_COOKIE['username'];
+    $passMSG = checkPass($pass, $pass2);
+    if ($passMSG === true) {
+      try {
+        $now = new DateTime('now');
+        $pass_hash = password_hash($pass, PASSWORD_BCRYPT);
+        $zeitstempel = $now->format('Y-m-d H:i:s');
+  
+        $conn = conn_admin('update_admin');
+        $conn->query("UPDATE spieler SET passwort='$pass_hash', zeitstempel='$zeitstempel', logfails = 0, active = 1 WHERE spielername='$name'");
+        $conn->close();
+        header('Location:../quiz.php');
+      } catch (Exception $e) {
+        echo $e->getMessage();
+        $conn->close();
+      }
     }
   }
 }
